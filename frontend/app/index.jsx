@@ -1,4 +1,5 @@
-import { Text, TextInput, View } from "react-native";
+import { Text, View } from "react-native";
+import { TextInput } from "react-native-paper";
 import { useState } from "react";
 
 export default function Index() {
@@ -6,10 +7,8 @@ export default function Index() {
   return (
     <View>
       <View>
-        <TextInput placeholder="Digite uma tarefa" />
-        <Pressable>
-          <Text>+</Text>
-        </Pressable>
+        <TextInput label="Tarefa..." value={tarefa} onChangeText={setTarefa} />
+        <Button incon="plus" mode="contained" onPress={() => console.log(tarefa)} />
       </View>
     </View>
   );
