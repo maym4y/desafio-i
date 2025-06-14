@@ -1,8 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const userRoutes = require('./routes/userRoutes.js');
-const petRoutes = require('./routes/petRoutes.js');
+const tasksRoutes = require('./routes/tasksRoutes.js');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -19,7 +18,7 @@ mongoose.connect('mongodb://localhost:27017/mytodolist', {
     console.log('Erro ao conectar ao MongoDB:', err);
 });
 
-app.use('/api/task', userTasks);
+app.use('/api/task', tasksRoutes);
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);

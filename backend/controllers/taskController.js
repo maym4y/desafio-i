@@ -1,12 +1,13 @@
-const Task = require('../models/pet');
+const Task = require('../models/task');
 
 
 exports.createTask = async (req, res) => {
+    console.log("criando task...")
     try {
         const { name, isDone } = req.body;
         const task = new Task({ name, isDone });
         await task.save();
-        res.status(201).json(pet);
+        res.status(201).json(task);
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
@@ -28,7 +29,7 @@ exports.updateTask = async (req, res) => {
         const { id } = req.params;
         const { name, isDone } = req.body;
 
-        const updatedTask = await Pet.findByIdAndUpdate(id, { name, isDone }, { new: true });
+        const updatedTask = await Task.findByIdAndUpdate(id, { name, isDone }, { new: true });
         if (!updatedTask) return res.status(404).json({ message: 'Tarefa não encontrada' });
 
         res.status(200).json(updatedTask);
